@@ -1,10 +1,13 @@
 import { StyleSheet } from "react-native";
+import useThemeColors from "../../hooks/useThemeColors";
+
+const colors = useThemeColors()
 
 export const defaultStyle = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 10,
-    backgroundColor: "#EDF1FCFF"
+    backgroundColor: colors.background
   },
   row: {
     display: "flex",
@@ -25,7 +28,7 @@ export const defaultStyle = StyleSheet.create({
   },
   switchMode: {
     padding: 10,
-    margin: 5,
+    marginHorizontal: 5,
     borderRadius: 10,
     backgroundColor: "#fff",
   },

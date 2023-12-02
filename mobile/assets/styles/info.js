@@ -95,7 +95,8 @@ export const setting = StyleSheet.create({
   },
   textHeader: {
     fontWeight: '700',
-    fontSize: 17
+    fontSize: 19,
+    marginTop: 5
   },
   text: {
     fontSize: 17,
@@ -112,10 +113,10 @@ export const setting = StyleSheet.create({
     top: "30%",
     backgroundColor: '#fff',
     zIndex: 12,
-    padding: 10,
+    padding: 15,
     marginHorizontal: 30,
-    borderRadius: 10,
-    borderWidth: 0.3,
+    borderRadius: 15,
+    borderWidth: 1,
   },
   modalBtn: {
     padding: 10,

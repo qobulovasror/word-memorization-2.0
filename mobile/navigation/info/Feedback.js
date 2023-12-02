@@ -13,7 +13,7 @@ const Feedback = () => {
     const sentFeetBack = () => {
         if(feetActiveBtn===""){
             setError('btn');
-            alert("Ko'rsatilgan smaillardan birini tanlang");
+            alert("Ko'rsatilgan emojilardan birini tanlang");
             return;
         }
         console.log(emailIsValid(email));

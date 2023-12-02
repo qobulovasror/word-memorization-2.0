@@ -10,32 +10,36 @@ import {
 import { mainStyle } from "../../assets/styles/main";
 import { defaultStyle } from "../../assets/styles/defaultStyle";
 import CustomHeader from "../components/header";
-import Statistics from "../components/statistics";
+import { LineStatistics, ContribStatistics } from "../components/statistics";
 // import { getWords } from "../services/wordDBService";
 
-const Home = ({ goToProfile, navigation }) => {
+const Home = ({ goToOutScreen, navigation }) => {
   return (
     <View style={defaultStyle.container}>
-      <CustomHeader title="Asosiy bo'lim"/>
+      <CustomHeader title="Asosiy bo'lim" />
       <ScrollView style={defaultStyle.column}>
+        {/* Statistics */}
+        <Text style={{ fontSize: 20, fontWeight: "600" }}>Statistika</Text>
+        <LineStatistics />
+
         {/* Kunlik so'z o'rganish */}
         <View style={[defaultStyle.column, { marginBottom: 2 }]}>
-          <Text style={{ fontSize: 15 }}>Kunlik so'z o'rganish</Text>
+          <Text style={{ fontSize: 20 }}>Kunlik so'z o'rganish</Text>
           <View style={[defaultStyle.column, mainStyle.itemGroup]}>
             <TouchableOpacity
               style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => goToProfile()}
+              onPress={() => navigation.jumpTo("add", { owner: "Michaś" })}
             >
               <AntDesign name="pluscircleo" size={25} color={"#0f0"} />
               <Text style={{ marginStart: 10, fontSize: 20 }}>
-                So'z qo'shish va qo'shilgan so'zlar
+                Yangi so'z qo'shish
               </Text>
             </TouchableOpacity>
             <View style={mainStyle.hr}></View>
             <TouchableOpacity
               style={[defaultStyle.row, mainStyle.item]}
               // onPress={() => navigation.navigate("Bugungi so'zlarni o'rganish")}
-              onPress={() => navigation.jumpTo('learn', { owner: 'Michaś' })}
+              onPress={() => navigation.jumpTo("learn")}
             >
               <Feather name="refresh-ccw" size={25} color={"#00f"} />
               <Text style={{ marginStart: 10, fontSize: 20 }}>
@@ -45,95 +49,45 @@ const Home = ({ goToProfile, navigation }) => {
             <View style={mainStyle.hr}></View>
             <TouchableOpacity
               style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Profile")}
+              onPress={() => goToOutScreen("Profile")}
             >
-              <Feather name="bookmark" size={25} color={"#50C878"} />
+              <Feather name="list" size={25} color="#9457EB" />
               <Text style={{ marginStart: 10, fontSize: 20 }}>
-                Yod olingan so'zlar
+                Kiritilgan so'zlar ro'yxati
+              </Text>
+            </TouchableOpacity>
+            <View style={mainStyle.hr}></View>
+            <TouchableOpacity
+              style={[defaultStyle.row, mainStyle.item]}
+              onPress={() => navigation.jumpTo("game")}
+            >
+              <Ionicons
+                name="game-controller-outline"
+                size={26}
+                color="#F4CA16FF"
+              />
+              <Text style={{ marginStart: 10, fontSize: 20 }}>
+                O'yin orqali so'z o'rganish
               </Text>
             </TouchableOpacity>
           </View>
         </View>
-        {/* Qo'shimcha imkoniyatlar */}
-        <View style={[defaultStyle.column, { marginBottom: 2 }]}>
-          <Text style={{ fontSize: 15 }}>Qo'shimcha imkoniyatlar</Text>
-          <View style={[defaultStyle.column, mainStyle.itemGroup]}>
-            <TouchableOpacity
-              style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Translate")}
-            >
-              <MaterialCommunityIcons
-                name="translate"
-                size={25}
-                color={"#9457EB"}
-              />
-              <Text style={{ marginStart: 10, fontSize: 20 }}>
-                Tarjima qilish
-              </Text>
-            </TouchableOpacity>
-            <View style={mainStyle.hr}></View>
-            <TouchableOpacity
-              style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Gramatik tekshiruv")}
-            >
-              <FontAwesome5 name="spell-check" size={25} color={"#516512"} />
-              <Text style={{ marginStart: 10, fontSize: 20 }}>
-                Gramatik tekshiruv
-              </Text>
-            </TouchableOpacity>
-            <View style={mainStyle.hr}></View>
-            <TouchableOpacity
-              style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Noto'g'ri fe'llar")}
-            >
-              <Ionicons name="list" size={25} color={"#B91786"} />
-              <Text style={{ marginStart: 10, fontSize: 20 }}>
-                Noto'g'ri fe'llar
-              </Text>
-            </TouchableOpacity>
-            <View style={mainStyle.hr}></View>
-            <TouchableOpacity
-              style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Alifbo")}
-            >
-              <MaterialCommunityIcons
-                name="alphabetical"
-                size={25}
-                color={"#121786"}
-              />
-              <Text style={{ marginStart: 10, fontSize: 20 }}>Alifbo</Text>
-            </TouchableOpacity>
-            <View style={mainStyle.hr}></View>
-            <TouchableOpacity
-              style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Raqamlar")}
-            >
-              <MaterialCommunityIcons
-                name="numeric"
-                size={25}
-                color={"#00ff00"}
-              />
-              <Text style={{ marginStart: 10, fontSize: 20 }}>Raqamlar</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        {/* Statistika */}
-        <Statistics/>
+
         {/* Dastur haqida */}
         <View style={[defaultStyle.column, { marginBottom: 2 }]}>
-          <Text style={{ fontSize: 15 }}>Dastur haqida</Text>
+          <Text style={{ fontSize: 20 }}>Dastur haqida</Text>
           <View style={[defaultStyle.column, mainStyle.itemGroup]}>
             <TouchableOpacity
               style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Sozlanmalar")}
+              onPress={() =>navigation.jumpTo("Setting")}
             >
-              <AntDesign name="setting" size={25} color={"#00f"} />
+              <AntDesign name="setting" size={25} color={"#D06421FF"} />
               <Text style={{ marginStart: 10, fontSize: 20 }}>Sozlanmalar</Text>
             </TouchableOpacity>
             <View style={mainStyle.hr}></View>
             <TouchableOpacity
               style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Fikr-mulohazalar")}
+              onPress={() => goToOutScreen("Fikr-mulohazalar")}
             >
               <Octicons name="feed-discussion" size={25} color={"#50C878"} />
               <Text style={{ marginStart: 10, fontSize: 20 }}>
@@ -143,21 +97,20 @@ const Home = ({ goToProfile, navigation }) => {
             <View style={mainStyle.hr}></View>
             <TouchableOpacity
               style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.navigate("Dastur haqida ma'lumot")}
+              onPress={() => goToOutScreen("Dastur haqida ma'lumot")}
             >
               <AntDesign name="infocirlceo" size={25} color={"#B91786"} />
               <Text style={{ marginStart: 10, fontSize: 20 }}>
                 Dastur haqida va bog'lanish
               </Text>
             </TouchableOpacity>
-            {/* <View style={mainStyle.hr}></View> */}
-            {/* <TouchableOpacity style={[defaultStyle.row, mainStyle.item]}
-              onPress={()=>navigation.navigate("Bog'lanish")}>
-              <AntDesign name="contacts" size={25} color={"#9457EB"} />
-              <Text style={{marginStart: 10, fontSize: 20}}>Bog'lanish</Text>
-            </TouchableOpacity> */}
           </View>
         </View>
+
+        {/* Activites */}
+        <Text style={{ fontSize: 20, fontWeight: "600" }}>Faollik</Text>
+        <ContribStatistics />
+        <View style={{ marginBottom: 10 }}></View>
       </ScrollView>
     </View>
   );

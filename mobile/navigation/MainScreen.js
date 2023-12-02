@@ -5,13 +5,13 @@ import { Ionicons, Feather, MaterialIcons, Entypo } from "@expo/vector-icons";
 //screens
 import HomeScreen from "./screens/Home";
 import AddWords from './daily/AddWords';
+import Setting from './info/setting';
 
 const Tab = createMaterialBottomTabNavigator();
 
-// onPress={() => navigation.navigate('Profile')}
-export default function MainScreen({navigation}) {
-  const goToProfile = () => {
-    navigation.navigate('Profile')
+export default function MainScreen({navigation, mode, setMode}) {
+  const goToOutScreen = (screenName) => {
+    navigation.navigate(screenName)
   }
   return (
     <Tab.Navigator
@@ -29,7 +29,7 @@ export default function MainScreen({navigation}) {
           ),
         }}
       >
-        {props => <HomeScreen {...props} goToProfile={goToProfile} />}
+        {props => <HomeScreen {...props} goToOutScreen={goToOutScreen} mode={mode} />}
       </Tab.Screen>
       <Tab.Screen
         name="learn"
@@ -63,7 +63,7 @@ export default function MainScreen({navigation}) {
       />
       <Tab.Screen
         name="Setting"
-        component={HomeScreen}
+        component={Setting}
         options={{
           tabBarLabel: "Sozlanmalar",
           tabBarIcon: ({ color }) => (
