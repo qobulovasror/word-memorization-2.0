@@ -105,6 +105,7 @@ const Learn = () => {
   }, [sound]);
   useEffect(()=>{
     setMode(true);
+    return;
     getWordWidthParam(null, 'new', null, null)
       .then((data) => {
         setWords(data);

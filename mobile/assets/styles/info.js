@@ -47,14 +47,14 @@ export const info = StyleSheet.create({
     borderRadius: 10,
     position: 'relative',
     top: '-10%',
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
   },
   btnGroup: {
     borderRadius: 10,
     padding: 5,
     marginVertical: 10,
     borderWidth: 0.2,
-    borderColor: "#000",
+    // borderColor: "#000",
   },
   contactBtn: {
     marginHorizontal: 5,

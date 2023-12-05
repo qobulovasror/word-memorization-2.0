@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, Dimensions, ToastAndroid } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+  ToastAndroid,
+} from "react-native";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { defaultStyle } from "../../assets/styles/defaultStyle";
 import { mainStyle } from "../../assets/styles/main";
@@ -9,7 +15,7 @@ import notify from "./notify";
 
 const screenWidth = Dimensions.get("window").width - 30;
 
-const LineStatistics = () => {
+const LineStatistics = ({ mode }) => {
   return (
     <View style={{ margin: 3, borderWidth: 0.2, borderColor: "#00f" }}>
       <LineChart
@@ -17,27 +23,31 @@ const LineStatistics = () => {
         width={screenWidth}
         height={256}
         verticalLabelRotation={30}
-        chartConfig={chartConfig}
-        onDataPointClick={({value})=>notify(`Harakatlar soni ${value}`)}
+        chartConfig={{
+          backgroundGradientFrom: mode.text=="#000"? '#CBDAECFF': "#1A1C29FF",//mode.backgroundColor, ///"#CBDAECFF",
+          backgroundGradientTo: mode.text=="#000"? '#E8F2FCFF': "#212349FF",
+          color: (opacity = 1) => mode.text=="#000"? `rgba(35, 72, 111, ${opacity})`: `rgba(255, 255, 255, ${opacity})`,
+        }}
+        onDataPointClick={({ value }) => notify(`Harakatlar soni ${value}`)}
         bezier
       />
     </View>
   );
 };
-const ContribStatistics = () => {
+const ContribStatistics = ({mode}) => {
   return (
-    <View style={{ margin: 1, borderWidth: 1, borderColor: "#00f"}}>
+    <View style={{ margin: 1, borderWidth: 1, borderColor: "#00f" }}>
       <ContributionGraph
         values={commitsData}
-        onDayPress={({ date, count })=>notify(`${count}, ${date}`)}
+        onDayPress={({ date, count }) => notify(`${count}, ${date}`)}
         endDate={new Date("2017-04-01")}
         numDays={100}
         width={screenWidth}
         height={220}
         chartConfig={{
-          backgroundGradientFrom: "#EDF1FC46",
-          backgroundGradientTo: "#EDF1FC46",
-          color: (opacity = 1) => `rgba(0, 100, 255, ${opacity})`,
+          backgroundGradientFrom: mode.text=="#000"? "#EDF1FC46" : "#1A1C29FF",
+          backgroundGradientTo: mode.text=="#000"? "#EDF1FC46" : "#1A1C29FF",
+          color: (opacity = 1) => mode.text=="#000"? `rgba(0, 100, 255, ${opacity})`: `rgba(31, 177, 254, ${opacity})`,
         }}
       />
     </View>
@@ -45,7 +55,20 @@ const ContribStatistics = () => {
 };
 
 const data = {
-  labels: ["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"],
+  labels: [
+    "Yanvar",
+    "Fevral",
+    "Mart",
+    "Aprel",
+    "May",
+    "Iyun",
+    "Iyul",
+    "Avgust",
+    "Sentabr",
+    "Oktabr",
+    "Noyabr",
+    "Dekabr",
+  ],
   datasets: [
     {
       data: [0, 0, 0, 0, 15, 43, 52, 42, 30, 40, 45, 20],
@@ -53,11 +76,6 @@ const data = {
   ],
 };
 
-const chartConfig = {
-  backgroundGradientFrom: "#CBDAECFF",
-  backgroundGradientTo: "#E8F2FCFF",
-  color: (opacity = 1) => `rgba(35, 72, 111, ${opacity})`,
-};
 const commitsData = [
   { date: "2017-01-02", count: 1 },
   { date: "2017-01-03", count: 2 },

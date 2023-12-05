@@ -8,7 +8,7 @@ import { deleteWord } from "../../../services/wordDBService";
 
 
 const AddeddList = (props) => {
-  const {list, setMode, setEdit, fetchData} = props;
+  const {list, setMode, setEdit, fetchData, mode} = props;
 
     const [deleteId, setDeleteId] = useState('');
     const deleteHandler = () => {
@@ -75,7 +75,7 @@ const AddeddList = (props) => {
               />
             </View>
             :
-            <Text style={addedList.defaultMsg}>Ro'yxat bo'sh</Text>
+            <Text style={[addedList.defaultMsg, {backgroundColor: mode.background2}]}>Ro'yxat bo'sh</Text>
           }
         </View>
     )

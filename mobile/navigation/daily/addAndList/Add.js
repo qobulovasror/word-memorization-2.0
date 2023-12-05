@@ -17,7 +17,7 @@ import { saveWord, updateWord } from "../../../services/wordDBService";
 const height = Dimensions.get("window").height;
 
 const Add = (props) => {
-  const { edit, fetchData, setEdit } = props;
+  const { edit, fetchData, setEdit, mode } = props;
   const [exampleCount, setExampleCount] = useState(0);
   const [hindListDisplay, setHindListDisplay] = useState(false) 
 
@@ -106,10 +106,11 @@ const Add = (props) => {
       {/* <ScrollView> */}
         <View style={{ margin: 10 }}>
           <View style={defaultStyle.column}>
-            <Text style={{ fontSize: 18 }}>So'z: (Inglizcha) </Text>
+            <Text style={{color: mode.text, fontSize: 18 }}>So'z: (Inglizcha) </Text>
             <TextInput
               placeholder="English word"
-              style={addwords.input}
+              placeholderTextColor={mode.text}
+              style={[addwords.input, {borderColor: mode.text, color: mode.text}]}
               value={word.name}
               onChangeText={(text) => handleChange("name", text)}
             />
@@ -122,12 +123,12 @@ const Add = (props) => {
               <Feather name="x" size={25} color="#fff" />
             </TouchableOpacity>
             <FlatList
-              style={addwords.freqList}
+              style={[addwords.freqList, {backgroundColor: mode.background2, borderColor: mode.text}]}
               data={dataFreqWordList}
               renderItem={({ item }) => (
                 <View style={addwords.freqListItem}>
                   <TouchableOpacity onPress={()=>putWordFromHind(item)}>
-                    <Text style={{ fontSize: 25, marginStart: 5 }}>
+                    <Text style={{color: mode.text, fontSize: 25, marginStart: 5 }}>
                       {item.name} - {item.translation}
                     </Text>
                   </TouchableOpacity>
@@ -136,27 +137,30 @@ const Add = (props) => {
             />
           </View>
           <View style={defaultStyle.column}>
-            <Text style={{ fontSize: 18 }}>Tarjimasi: (Uzbekcha)</Text>
+            <Text style={{color: mode.text, fontSize: 18 }}>Tarjimasi: (Uzbekcha)</Text>
             <TextInput
               placeholder="Translation"
-              style={addwords.input}
+              placeholderTextColor={mode.text}
+              style={[addwords.input, {borderColor: mode.text, color: mode.text}]}
               value={word.translation}
               onChangeText={(text) => handleChange("translation", text)}
             />
           </View>
         </View>
-        <View style={addwords.exampleGroup}>
+        <View style={[addwords.exampleGroup, {backgroundColor: mode.background2}]}>
           <View style={defaultStyle.column}>
-            <Text>Misol qo'shish (ixtiyoriy)</Text>
+            <Text style={{color: mode.text}}>Misol qo'shish (ixtiyoriy)</Text>
             <TextInput
               placeholder="Inglizcha misol"
-              style={addwords.input}
+              placeholderTextColor={mode.text}
+              style={[addwords.input, {borderColor: mode.text, color: mode.text}]}
               value={word.example}
               onChangeText={(text) => handleChange("example", text)}
             />
             <TextInput
               placeholder="Misol tarjimasi"
-              style={addwords.input}
+              placeholderTextColor={mode.text}
+              style={[addwords.input, {borderColor: mode.text, color: mode.text}]}
               value={word.exampleMeaning}
               onChangeText={(text) => handleChange("exampleMeaning", text)}
             />
@@ -167,7 +171,7 @@ const Add = (props) => {
             addwords.addBtn,
             defaultStyle.row,
             defaultStyle.around,
-            { position: "relative" },
+            { position: "relative", marginTop: 5 },
           ]}
           onPress={addWordHandler}
         >
@@ -177,7 +181,7 @@ const Add = (props) => {
             color={"#000"}
             style={{ position: "absolute", marginTop: 14, left: "10%" }}
           />
-          <Text style={{ fontSize: 20, textAlign: "center" }}>
+          <Text style={{color: '#000', fontSize: 20, textAlign: "center" }}>
             So'zni qo'shish
           </Text>
         </TouchableOpacity>

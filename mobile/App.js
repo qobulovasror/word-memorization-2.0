@@ -10,25 +10,27 @@ import Profile from "./navigation/screens/Profile";
 import Feedback from "./navigation/info/Feedback.js";
 import Information from "./navigation/info/Information.js";
 import { useState } from "react";
+import useThemeColors from "./hooks/useThemeColors.js";
 
 const Stack = createStackNavigator();
 
 function MyStack() {
-  const [mode, setMode] = useState("dark"); //light - dark
+  const mode = useThemeColors()
+  
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="MainScreen"
+        name="Main Screen"
         options={{
           headerTintColor: "#000",
-          headerStyle: { backgroundColor: "#EDF1FCFF", height: 50 },
+          headerStyle: { backgroundColor:  mode.background, height: 40 },
           transitionSpec: {
             open: AppNavigastionScreenConfig,
             close: AppNavigastionScreenConfig,
           },
         }}
       >
-        {(props) => <MainScreen {...props} mode={mode} setMode={setMode}/>}
+        {(props) => <MainScreen {...props} mode={mode}/>}
       </Stack.Screen>
       <Stack.Screen
         name="Fikr-mulohazalar"
@@ -44,6 +46,10 @@ function MyStack() {
         options={{
           cardStyleInterpolator:
             CardStyleInterpolators.forFadeFromBottomAndroid,
+          headerStyle: {
+            backgroundColor: mode.background
+          },
+          headerTintColor: mode.text
         }}
       >
         {(props) => <Information {...props} mode={mode} />}

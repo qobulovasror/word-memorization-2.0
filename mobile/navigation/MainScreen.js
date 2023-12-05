@@ -1,6 +1,7 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Ionicons, Feather, MaterialIcons, Entypo } from "@expo/vector-icons";
 // import { defaultStyle } from "../assets/styles/defaultStyle";
+import TodaysWordStudy from './daily/TodaysWordStudy'
 
 //screens
 import HomeScreen from "./screens/Home";
@@ -9,7 +10,7 @@ import Setting from './info/setting';
 
 const Tab = createMaterialBottomTabNavigator();
 
-export default function MainScreen({navigation, mode, setMode}) {
+export default function MainScreen({navigation, mode}) {
   const goToOutScreen = (screenName) => {
     navigation.navigate(screenName)
   }
@@ -17,8 +18,8 @@ export default function MainScreen({navigation, mode, setMode}) {
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#fff"
-      labelStyle={{ fontSize: 12 }}
-      style={{ backgroundColor: "#00f" }}
+      labelStyle={{ fontSize: 10 }}
+      style={{ backgroundColor: mode.background}}
     >
       <Tab.Screen
         name="Home"
@@ -33,9 +34,9 @@ export default function MainScreen({navigation, mode, setMode}) {
       </Tab.Screen>
       <Tab.Screen
         name="learn"
-        component={HomeScreen}
+        component={TodaysWordStudy}
         options={{
-          tabBarLabel: "O'ranish",
+          tabBarLabel: "O'rganish",
           tabBarIcon: ({ color }) => (
             <Feather name="repeat" size={24} color={color} />
           ),
@@ -43,14 +44,15 @@ export default function MainScreen({navigation, mode, setMode}) {
       />
       <Tab.Screen
         name="add"
-        component={AddWords}
         options={{
           tabBarLabel: "So'z qo'shish",
           tabBarIcon: ({ color }) => (
             <Ionicons name="add-circle-sharp" size={25} color={color} />
           ),
         }}
-      />
+      >
+        {props => <AddWords {...props} mode={mode} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Game"
         component={HomeScreen}

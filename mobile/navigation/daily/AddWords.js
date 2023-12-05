@@ -8,8 +8,8 @@ import AddeddList from "./addAndList/List";
 import { createWordTable, getWords } from "../../services/wordDBService";
 import CustomHeader from "../components/header";
 
-export default function AddWords({navigation}) {
-  const [mode, setMode] = useState("add");
+export default function AddWords({navigation, mode}) {
+  const [modeScreen, setModeScreen] = useState("add");
   const [list, setList] = useState([]);
   const [edit, setEdit] = useState("");
 
@@ -24,9 +24,9 @@ export default function AddWords({navigation}) {
       });
   };
 
-  const switchHandler = (mode) => {
-    setMode(mode);
-    if (mode === "addeddList") fetchData();
+  const switchHandler = (modeScreen) => {
+    setModeScreen(modeScreen);
+    if (modeScreen === "addeddList") fetchData();
   };
 
   useEffect(() => {
@@ -35,42 +35,43 @@ export default function AddWords({navigation}) {
   const selectedStyle = { backgroundColor: "#71BBF8FF", borderColor: "#fff" };
 
   return (
-    <View style={defaultStyle.container}>
+    <View style={[defaultStyle.container, {backgroundColor: mode.background}]}>
       <TouchableOpacity style={{position: 'absolute', margin: 10, zIndex: 10}} onPress={() => navigation.jumpTo("Home")}>
-        <AntDesign name="left" size={28} color="black" />
+        <AntDesign name="left" size={28} color={mode.text} />
       </TouchableOpacity>
       <CustomHeader
         title={
-          mode != "addeddList" ? "Yangi so'z qo'shish" : "Qo'shilgan so'zlar"
+          modeScreen != "addeddList" ? "Yangi so'z qo'shish" : "Qo'shilgan so'zlar"
         }
       />
       <View
-        style={[defaultStyle.row, defaultStyle.around, defaultStyle.switchMode]}
+        style={[defaultStyle.row, defaultStyle.around, defaultStyle.switchMode, {backgroundColor: mode.background}]}
       >
         <TouchableOpacity
-          style={[defaultStyle.switchBtn, mode == "add" ? selectedStyle : ""]}
+          style={[defaultStyle.switchBtn, modeScreen == "add" ? selectedStyle : "", {borderColor: mode.text}]}
           onPress={() => switchHandler("add")}
         >
-          <Text>Yangi so'z qo'shish</Text>
+          <Text style={{fontSize: 18, color: mode.text}}>Yangi so'z qo'shish</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
             defaultStyle.switchBtn,
-            mode == "addeddList" ? selectedStyle : "",
+            modeScreen == "addeddList" ? selectedStyle : "",, {borderColor: mode.text}
           ]}
           onPress={() => switchHandler("addeddList")}
         >
-          <Text>Qo'shilgan so'zlar</Text>
+          <Text style={{fontSize: 18, color: mode.text}}>Qo'shilgan so'zlar</Text>
         </TouchableOpacity>
       </View>
-      {mode === "add" ? (
-        <Add fetchData={fetchData} edit={edit} setEdit={setEdit} />
+      {modeScreen === "add" ? (
+        <Add fetchData={fetchData} edit={edit} setEdit={setEdit} mode={mode} />
       ) : (
         <AddeddList
           fetchData={fetchData}
           list={list}
-          setMode={setMode}
+          setMode={setModeScreen}
           setEdit={setEdit}
+          mode={mode}
         />
       )}
     </View>

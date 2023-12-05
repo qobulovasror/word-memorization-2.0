@@ -25,7 +25,7 @@ export const mainStyle = StyleSheet.create({
   itemGroup: {
     margin: 5,
     borderRadius: 10,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     padding: 10,
   },
   item: {

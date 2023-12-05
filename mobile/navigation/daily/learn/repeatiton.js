@@ -105,6 +105,7 @@ const Repeatiton = () => {
   }, [sound]);
   useEffect(()=>{
     setMode(true);
+    return;
     getWordWidthParam(null, 'repeat', null, null)
       .then((data) => {
         setWords(data);
