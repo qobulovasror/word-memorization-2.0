@@ -7,6 +7,7 @@ import TodaysWordStudy from './daily/TodaysWordStudy'
 import HomeScreen from "./screens/Home";
 import AddWords from './daily/AddWords';
 import Setting from './info/setting';
+import Game from './screens/Game';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -54,15 +55,16 @@ export default function MainScreen({navigation, mode}) {
         {props => <AddWords {...props} mode={mode} />}
       </Tab.Screen>
       <Tab.Screen
-        name="Game"
-        component={HomeScreen}
+        name="game"
         options={{
           tabBarLabel: "Game",
           tabBarIcon: ({ color }) => (
             <Entypo name="game-controller" size={24} color={color} />
           ),
         }}
-      />
+      >
+        {props => <Game {...props} mode={mode} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Setting"
         component={Setting}

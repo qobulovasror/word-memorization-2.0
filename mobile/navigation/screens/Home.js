@@ -29,7 +29,7 @@ const Home = ({ goToOutScreen, navigation, mode }) => {
           <View style={[defaultStyle.column, mainStyle.itemGroup, {backgroundColor: mode.background2}]}>
             <TouchableOpacity
               style={[defaultStyle.row, mainStyle.item]}
-              onPress={() => navigation.jumpTo("add", { owner: "Michaś" })}
+              onPress={() => navigation.jumpTo("add")}
             >
               <AntDesign name="pluscircleo" size={25} color={"#0f0"} />
               <Text style={{ color: mode.text, marginStart: 10, fontSize: 20 }}>
