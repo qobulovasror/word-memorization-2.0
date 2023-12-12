@@ -6,6 +6,7 @@ import cors from 'cors';
 //import routes from file
 import user from '../routes/user.js';
 import auth from '../routes/auth.js';
+import game from '../routes/game.js';
 // import word from '../routes/words.js';
 
 export default function(app){
@@ -18,4 +19,5 @@ export default function(app){
     app.use("/api/users", user);
     app.use("/api/auth", auth);
     // app.use('/api/words', word);
+    app.use("/api/game", game);
 }

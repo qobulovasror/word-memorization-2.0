@@ -40,5 +40,16 @@ export const gameStyle = StyleSheet.create({
     borderColor: "#00f",
     padding: 10,
     fontSize: 18,
+    textAlign: 'center'
   },
+  checkboxGroup: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginBottom: 10
+  },
+  checkboxStyle: {
+    display: 'flex',
+    flexDirection: 'row',
+
+  }
 });

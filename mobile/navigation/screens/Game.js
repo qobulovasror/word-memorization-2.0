@@ -3,7 +3,6 @@ import { defaultStyle } from "../../assets/styles/defaultStyle";
 import CustomHeader from "../components/header";
 import { AntDesign } from "@expo/vector-icons";
 import { gameStyle } from "../../assets/styles/game";
-import { mainStyle } from "../../assets/styles/main";
 import CustomModal from "./gameComponents/modal";
 
 const Game = ({ navigation, mode }) => { 
