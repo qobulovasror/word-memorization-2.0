@@ -4,6 +4,9 @@ import CustomHeader from "../components/header";
 import { AntDesign } from "@expo/vector-icons";
 import { gameStyle } from "../../assets/styles/game";
 import CustomModal from "./gameComponents/modal";
+import Waiting from "./gameComponents/Waiting";
+import Playground from "./gameComponents/Playground";
+import Result from "./gameComponents/Result";
 
 const Game = ({ navigation, mode }) => { 
   return (
@@ -17,9 +20,12 @@ const Game = ({ navigation, mode }) => {
         <AntDesign name="left" size={28} color={mode.text} />
       </TouchableOpacity>
       <CustomHeader title={"O'yin orqali o'rganish"} />
-      <View style={gameStyle.back}>
+      {/* <View style={gameStyle.back}>
         <CustomModal/>
-      </View>
+      </View> */}
+      {/* <Playground/> */}
+      <Result/>
+      {/* <Waiting mode={mode}/> */}
     </View>
   );
 };

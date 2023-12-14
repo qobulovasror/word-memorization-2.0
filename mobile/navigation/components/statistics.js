@@ -10,7 +10,7 @@ import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { defaultStyle } from "../../assets/styles/defaultStyle";
 import { mainStyle } from "../../assets/styles/main";
 
-import { LineChart, ContributionGraph } from "react-native-chart-kit";
+import { LineChart, ContributionGraph, PieChart } from "react-native-chart-kit";
 import notify from "./notify";
 
 const screenWidth = Dimensions.get("window").width - 30;
@@ -34,6 +34,34 @@ const LineStatistics = ({ mode }) => {
     </View>
   );
 };
+
+const PieChartStatistics = ({ mode, data }) => {
+  return (
+    <View style={{ margin: 3, borderWidth: 0.2, borderColor: "#00f", borderRadius: 10 }}>
+      <PieChart
+        data={data}
+        width={screenWidth}
+        height={220}
+        chartConfig={{
+          backgroundGradientFrom: "#1E2923",
+          backgroundGradientFromOpacity: 0,
+          backgroundGradientTo: "#0000FF",
+          backgroundGradientToOpacity: 0.5,
+          color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+          strokeWidth: 2,
+          barPercentage: 0.5,
+          useShadowColorFromDataset: false
+        }}
+        accessor={"population"}
+        backgroundColor={"transparent"}
+        paddingLeft={"5"}
+        center={[0, 0]}
+        absolute
+      />
+    </View>
+  );
+};
+
 const ContribStatistics = ({mode}) => {
   return (
     <View style={{ margin: 1, borderWidth: 1, borderColor: "#00f" }}>
@@ -228,4 +256,4 @@ const Statistics1 = () => {
   );
 };
 
-export { LineStatistics, ContribStatistics };
+export { LineStatistics, ContribStatistics, PieChartStatistics };
