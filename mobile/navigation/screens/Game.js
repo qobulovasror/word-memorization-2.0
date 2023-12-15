@@ -20,11 +20,11 @@ const Game = ({ navigation, mode }) => {
         <AntDesign name="left" size={28} color={mode.text} />
       </TouchableOpacity>
       <CustomHeader title={"O'yin orqali o'rganish"} />
-      {/* <View style={gameStyle.back}>
-        <CustomModal/>
-      </View> */}
+      <View style={[gameStyle.back, {backgroundColor: (mode.text=="#fff")? mode.backgroun3: "#6E6E6EAB"}]}>
+        <CustomModal mode={mode}/>
+      </View>
       {/* <Playground/> */}
-      <Result/>
+      {/* <Result/> */}
       {/* <Waiting mode={mode}/> */}
     </View>
   );

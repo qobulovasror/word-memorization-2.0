@@ -5,11 +5,11 @@ import Checkbox from "expo-checkbox";
 import { defaultStyle } from "../../../assets/styles/defaultStyle";
 
 const SetParam = (props) => {
-  const { gameParams, setGameParams, startGame } = props;
+  const { gameParams, setGameParams, startGame, mode } = props;
   return (
     <View style={gameStyle.setParam}>
       <View style={gameStyle.setGroup}>
-        <Text style={gameStyle.paramTitle}>So'z darajasi</Text>
+        <Text style={[gameStyle.paramTitle, {color: mode.text}]}>So'z darajasi</Text>
         <View style={[defaultStyle.row, defaultStyle.around]}>
           <View style={gameStyle.checkboxStyle}>
             <Checkbox
@@ -23,7 +23,7 @@ const SetParam = (props) => {
               }
               color={gameParams.gameLevel.a1 ? "#4630EB" : undefined}
             />
-            <Text style={{ marginStart: 5 }}>A1</Text>
+            <Text style={{ marginStart: 5, color: mode.text }}>A1</Text>
           </View>
           <View style={gameStyle.checkboxStyle}>
             <Checkbox
@@ -37,7 +37,7 @@ const SetParam = (props) => {
               }
               color={gameParams.gameLevel.a2 ? "#4630EB" : undefined}
             />
-            <Text style={{ marginStart: 5 }}>A2</Text>
+            <Text style={{ marginStart: 5, color: mode.text }}>A2</Text>
           </View>
           <View style={gameStyle.checkboxStyle}>
             <Checkbox
@@ -51,7 +51,7 @@ const SetParam = (props) => {
               }
               color={gameParams.gameLevel.b1 ? "#4630EB" : undefined}
             />
-            <Text style={{ marginStart: 5 }}>B1</Text>
+            <Text style={{ marginStart: 5, color: mode.text }}>B1</Text>
           </View>
           <View style={gameStyle.checkboxStyle}>
             <Checkbox
@@ -65,7 +65,7 @@ const SetParam = (props) => {
               }
               color={gameParams.gameLevel.b2 ? "#4630EB" : undefined}
             />
-            <Text style={{ marginStart: 5 }}>B2</Text>
+            <Text style={{ marginStart: 5, color: mode.text }}>B2</Text>
           </View>
           <View style={gameStyle.checkboxStyle}>
             <Checkbox
@@ -79,18 +79,19 @@ const SetParam = (props) => {
               }
               color={gameParams.gameLevel.c1 ? "#4630EB" : undefined}
             />
-            <Text style={{ marginStart: 5 }}>C1</Text>
+            <Text style={{ marginStart: 5, color: mode.text }}>C1</Text>
           </View>
         </View>
       </View>
       <View style={gameStyle.setGroup}>
-        <Text style={gameStyle.paramTitle}>Belgilash vaqti (soniyada)</Text>
+        <Text style={[gameStyle.paramTitle, {color: mode.text}]}>Belgilash vaqti (soniyada)</Text>
         <RadioButtonGroup
           containerStyle={gameStyle.radioBtnStyle}
           containerOptionStyle={{ marginHorizontal: 10, fontSize: 20 }}
           selected={gameParams.time}
           onSelected={(value) => setGameParams({ ...gameParams, time: value })}
           radioBackground="#00f"
+          labelStyle={{color: mode.text}}
         >
           <RadioButtonItem value="5" label="5" />
           <RadioButtonItem value="10" label="10" />
@@ -100,12 +101,12 @@ const SetParam = (props) => {
         </RadioButtonGroup>
       </View>
       <View style={gameStyle.setGroup}>
-        <Text style={gameStyle.paramTitle}>Savollar soni</Text>
+        <Text style={[gameStyle.paramTitle, {color: mode.text}]}>Savollar soni</Text>
         <TextInput
           maxLength={2}
           placeholder="Savollar soni"
           inputMode="numeric"
-          style={gameStyle.input}
+          style={[gameStyle.input, {color: mode.text}]}
           keyboardType="numeric"
           onChangeText={(value)=>setGameParams({ ...gameParams, wordCount: value })}
           returnKeyType="go"
@@ -113,7 +114,7 @@ const SetParam = (props) => {
         />
       </View>
       <View style={gameStyle.setGroup}>
-        <Text style={gameStyle.paramTitle}>So'zlar turi</Text>
+        <Text style={[gameStyle.paramTitle, {color: mode.text}]}>So'zlar turi</Text>
         <RadioButtonGroup
           containerStyle={gameStyle.radioBtnStyle}
           containerOptionStyle={{ marginHorizontal: 8 }}
@@ -125,15 +126,15 @@ const SetParam = (props) => {
         >
           <RadioButtonItem
             value="eng"
-            label={<Text style={{ fontSize: 15 }}>Inglizcha</Text>}
+            label={<Text style={{ fontSize: 15, color: mode.text }}>Inglizcha</Text>}
           />
           <RadioButtonItem
             value="uzb"
-            label={<Text style={{ fontSize: 15 }}>Uzbekcha</Text>}
+            label={<Text style={{ fontSize: 15, color: mode.text }}>Uzbekcha</Text>}
           />
           <RadioButtonItem
             value="mixed"
-            label={<Text style={{ fontSize: 15 }}>Aralash</Text>}
+            label={<Text style={{ fontSize: 15, color: mode.text }}>Aralash</Text>}
           />
         </RadioButtonGroup>
       </View>
