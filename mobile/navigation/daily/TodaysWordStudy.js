@@ -7,20 +7,20 @@ import Repeatiton from "./learn/repeatiton";
 import Learn from "./learn/learning";
 import CustomHeader from "../components/header";
 
-export default function TodaysWordStudy({navigation}) {
+export default function TodaysWordStudy({navigation, dispMode}) {
   const [mode, setMode] = useState("learn");
   const switchHandler = (mode) => {
     setMode(mode);
   };
-  const selectedStyle = { backgroundColor: "#ccc", borderColor: "#fff" };
+  const selectedStyle = { backgroundColor: (dispMode.text=="#fff")? "#00f": "#ccc" , borderColor: dispMode.text };
 
   return (
-    <View style={defaultStyle.container}>
+    <View style={[defaultStyle.container, {backgroundColor: dispMode.background}]}>
       <TouchableOpacity
         style={{ position: "absolute", margin: 10, zIndex: 10 }}
         onPress={() => navigation.jumpTo("Home")}
       >
-        <AntDesign name="left" size={28} color={mode.text} />
+        <AntDesign name="left" size={28} color={dispMode.text} />
       </TouchableOpacity>
       <CustomHeader
         title={
@@ -33,22 +33,22 @@ export default function TodaysWordStudy({navigation}) {
         style={[defaultStyle.row, defaultStyle.around, defaultStyle.switchMode]}
       >
         <TouchableOpacity
-          style={[defaultStyle.switchBtn, mode == "learn" ? selectedStyle : ""]}
+          style={[defaultStyle.switchBtn, mode == "learn" ? selectedStyle : {borderColor: dispMode.text}]}
           onPress={() => switchHandler("learn")}
         >
-          <Text>Bugungi so'zni o'rganish</Text>
+          <Text style={{color: dispMode.text}}>Bugungi so'zni o'rganish</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
             defaultStyle.switchBtn,
-            mode == "repeat" ? selectedStyle : "",
+            mode == "repeat" ? selectedStyle : {borderColor: dispMode.text},
           ]}
-          onPress={() => switchHandler("repeat")}
+          onPress={() => {}}//switchHandler("repeat")}
         >
-          <Text>So'zlarni takrorlash</Text>
+          <Text style={{color: dispMode.text}}>So'zlarni takrorlash</Text>
         </TouchableOpacity>
       </View>
-      {mode === "learn" ? <Learn /> : <Repeatiton />}
+      {mode === "learn" ? <Learn dispMode={dispMode} /> : <Repeatiton dispMode={dispMode} />}
     </View>
   );
 }

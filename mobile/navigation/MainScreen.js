@@ -35,14 +35,15 @@ export default function MainScreen({navigation, mode}) {
       </Tab.Screen>
       <Tab.Screen
         name="learn"
-        component={TodaysWordStudy}
         options={{
           tabBarLabel: "O'rganish",
           tabBarIcon: ({ color }) => (
             <Feather name="repeat" size={24} color={color} />
           ),
         }}
-      />
+      >
+        {props => <TodaysWordStudy {...props} dispMode={mode} />}
+      </Tab.Screen>
       <Tab.Screen
         name="add"
         options={{

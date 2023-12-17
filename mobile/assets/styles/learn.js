@@ -20,7 +20,7 @@ export const learn = StyleSheet.create({
     borderRadius: 15,
     borderColor: "#000",
     borderWidth: 1,
-    backgroundColor: "#B5B5C2FF",
+    // backgroundColor: "#B5B5C2FF",
   },
   text: {
     fontSize: 24,
@@ -36,7 +36,7 @@ export const learn = StyleSheet.create({
   },
   swapBtn: {
     padding: 10,
-    borderColor: "#000",
+    // borderColor: "#000",
     borderRadius: 10,
     borderWidth: 0.5,
     marginHorizontal: 10,
@@ -44,7 +44,7 @@ export const learn = StyleSheet.create({
   },
   selectSequence: {
     padding: 10,
-    borderColor: "#000",
+    // borderColor: "#000",
     borderRadius: 10,
     borderWidth: 0.5,
     textAlign: "center",

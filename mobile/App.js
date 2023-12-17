@@ -9,10 +9,22 @@ import MainScreen from "./navigation/MainScreen";
 import Profile from "./navigation/screens/Profile";
 import Feedback from "./navigation/info/Feedback.js";
 import Information from "./navigation/info/Information.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useThemeColors from "./hooks/useThemeColors.js";
 
 const Stack = createStackNavigator();
+
+export default function App() {
+  // useEffect(()=>{
+
+  // })
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}
+
 
 function MyStack() {
   const mode = useThemeColors()
@@ -55,13 +67,5 @@ function MyStack() {
         {(props) => <Information {...props} mode={mode} />}
       </Stack.Screen>
     </Stack.Navigator>
-  );
-}
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
   );
 }

@@ -6,14 +6,14 @@ import { learn } from "../../../assets/styles/learn";
 import { Ionicons } from "@expo/vector-icons";
 
 const SettingMode = (props) => {
-  const { learnMode, setOrder, swapSequence, setSelectMode, startLearn } =
+  const { learnMode, setOrder, swapSequence, setSelectMode, startLearn, dispMode } =
     props;
   return (
-    <View style={learn.learnMode}>
-      <Text style={[defaultStyle.tCenter, { fontSize: 20, fontWeight: "700" }]}>
+    <View style={[learn.learnMode, {backgroundColor: (dispMode.text=="#fff")? "#2E343BEF" : "#B5B5C2FF"}]}>
+      <Text style={[defaultStyle.tCenter, { fontSize: 20, fontWeight: "700", color: dispMode.text }]}>
         Sozlanmalari
       </Text>
-      <Text style={learn.settingTitle}>So'zlar ketma-ketlik</Text>
+      <Text style={[learn.settingTitle, {color: dispMode.text}]}>So'zlar ketma-ketlik</Text>
       <View
         style={[defaultStyle.row, defaultStyle.around, { marginStart: 40 }]}
       >
@@ -24,7 +24,7 @@ const SettingMode = (props) => {
             onValueChange={setOrder}
             color={learnMode.order ? "#4630EB" : undefined}
           />
-          <Text style={{ fontSize: 18, margin: 8, marginStart: 0 }}>
+          <Text style={{ fontSize: 18, margin: 8, marginStart: 0, color: dispMode.text }}>
             Tartibli
           </Text>
         </View>
@@ -35,30 +35,30 @@ const SettingMode = (props) => {
             onValueChange={setOrder}
             color={!learnMode.order ? "#4630EB" : undefined}
           />
-          <Text style={{ fontSize: 18, margin: 8, marginStart: 0 }}>
+          <Text style={{ fontSize: 18, margin: 8, marginStart: 0, color: dispMode.text }}>
             Aralash
           </Text>
         </View>
       </View>
-      <Text style={learn.settingTitle}>So'zni topish</Text>
+      <Text style={[learn.settingTitle, {color: dispMode.text}]}>So'zni topish</Text>
       <View style={[defaultStyle.row, { marginStart: 40 }]}>
         <View style={defaultStyle.column}>
-          <Text style={{ fontSize: 18, margin: 8, marginStart: 0 }}>
+          <Text style={{ fontSize: 18, margin: 8, marginStart: 0,color: dispMode.text }}>
             Chiqadigan
           </Text>
-          <Text style={learn.selectSequence}>{learnMode.sequence[0]}</Text>
+          <Text style={[learn.selectSequence, {color: dispMode.text, borderColor: dispMode.text}]}>{learnMode.sequence[0]}</Text>
         </View>
-        <TouchableOpacity style={learn.swapBtn} onPress={swapSequence}>
+        <TouchableOpacity style={[learn.swapBtn, {borderColor: dispMode.text}]} onPress={swapSequence}>
           <Ionicons name="swap-horizontal" color={"#00f"} size={30} />
         </TouchableOpacity>
         <View style={defaultStyle.column}>
-          <Text style={{ fontSize: 18, margin: 8, marginStart: 0 }}>
+          <Text style={{ fontSize: 18, margin: 8, marginStart: 0, color: dispMode.text }}>
             Topish kerak
           </Text>
-          <Text style={learn.selectSequence}>{learnMode.sequence[1]}</Text>
+          <Text style={[learn.selectSequence, {color: dispMode.text, borderColor: dispMode.text}]}>{learnMode.sequence[1]}</Text>
         </View>
       </View>
-      <Text style={learn.settingTitle}>So'zlar topish usuli</Text>
+      <Text style={[learn.settingTitle, {color: dispMode.text}]}>So'zlar topish usuli</Text>
       <View
         style={[defaultStyle.row, defaultStyle.around, { marginStart: 40 }]}
       >
@@ -69,7 +69,7 @@ const SettingMode = (props) => {
             onValueChange={setSelectMode}
             color={learnMode.selectMode ? "#4630EB" : undefined}
           />
-          <Text style={{ fontSize: 18, margin: 8, marginStart: 0 }}>
+          <Text style={{ fontSize: 18, margin: 8, marginStart: 0, color: dispMode.text }}>
             Yozish
           </Text>
         </View>
@@ -80,7 +80,7 @@ const SettingMode = (props) => {
             onValueChange={setSelectMode}
             color={!learnMode.selectMode ? "#4630EB" : undefined}
           />
-          <Text style={{ fontSize: 18, margin: 8, marginStart: 0 }}>
+          <Text style={{ fontSize: 18, margin: 8, marginStart: 0, color: dispMode.text }}>
             Tanlash
           </Text>
         </View>

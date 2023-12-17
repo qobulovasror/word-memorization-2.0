@@ -9,7 +9,7 @@ import { Feather } from "@expo/vector-icons";
 import { getWordWidthParam, updateWord } from "../../../services/wordDBService";
 import { SettingMode, randomizeData } from "./utils";
 
-const Repeatiton = () => {
+const Repeatiton = ({dispMode}) => {
   const [words, setWords] = useState([]);
   const [learnMode, setLearnMode] = useState({
     order: true,
@@ -125,6 +125,7 @@ const Repeatiton = () => {
           swapSequence={swapSequence}
           setSelectMode={setSelectMode}
           startLearn={startLearn}
+          dispMode={dispMode}
         />
       )}
       <View style={[learn.disWord, defaultStyle.column]}>
