@@ -2,4 +2,4 @@
 words memorizing app
 
 
-New version https://github.com/qobulovasror/word-memorization
+Old version https://github.com/qobulovasror/word-memorization
